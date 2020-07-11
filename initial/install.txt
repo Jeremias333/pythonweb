@@ -1,0 +1,3 @@
+$pip install Django==1.11 #install Django - https://www.djangoproject.com/download/
+
+django-admin startproject name #iniciar um projeto
