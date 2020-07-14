@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EMPRESA CHARTOS</title>
+	</head>
+	<body>
+		<center>LISTA DE FUNCIONÁRIOS</center>
+		{% if lista %}
+			{% for obj in lista %}
+				<p>{{ obj }}</p>
+			{% endfor %}
+		{% else %}
+			<p>Não existe nada no banco</p>
+		{% endif %}	
+	</body>
+</html>
