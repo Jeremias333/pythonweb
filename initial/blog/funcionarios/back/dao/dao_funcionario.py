@@ -39,10 +39,19 @@ class DaoFuncionario:
 		return cursor.rowcount
 
 	def select_all(self):
+		lista = list()
 		self.sql = "select * from funcionarios"
 		cursor.execute(self.sql)
 		result = cursor.fetchall()#passará todas linhas retornadas para result
-		return result
+		for row in result:
+			funcionario_obj = Funcionario()
+			funcionario_obj.id = row[0]
+			funcionario_obj.name = row[1]
+			funcionario_obj.function = row[2]
+			funcionario_obj.salary = row[3]
+
+			lista.append(funcionario_obj)
+		return lista
 
 	def select_id(self, id):
 		self.sql = "select * from funcionarios where id = %s"
