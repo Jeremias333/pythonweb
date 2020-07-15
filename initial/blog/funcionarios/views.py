@@ -1,6 +1,12 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 # Create your views here.
 from .back.dao.dao_funcionario import DaoFuncionario
+from .back.models.funcionario import Funcionario
+from django.views.decorators.csrf import csrf_protect
+
+
+funcionario = Funcionario()
+dao = DaoFuncionario()
 
 def home(req):
 	desc = "Aqui irá conseguir manipular os dados dos usuários da empresa chatos."
