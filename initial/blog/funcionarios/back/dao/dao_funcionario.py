@@ -6,6 +6,8 @@ sys.path.append(path.join(path.dirname(__file__), '..'))#diretório relativo ace
 from dao.connect_factory import ConnectFactory
 from models.funcionario import Funcionario
 
+#funcionario_obj = Funcionario()
+
 connect_factory = ConnectFactory()#instanciando.
 
 cursor = connect_factory.get_cursor()#conexão pertence agora a esta variável.
