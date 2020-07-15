@@ -22,11 +22,25 @@
 	<body>
 		<center><b><h2>LISTA DE FUNCIONÁRIOS</h2></b>
 		{% if lista %}
+			<table width="100%">
+				<tr>
+				    <th>ID</th>
+				    <th>Nome</th>
+				    <th>Função</th>
+				    <th>Salário</th>
+			  	</tr>
 			{% for obj in lista %}
-				<p>{{ obj }}</p>
+				<tr>
+				    <td>{{ obj.get_id }}</td>
+				    <td>{{ obj.get_name }}</td>
+				    <td>{{ obj.get_function }}</td>
+				    <td>{{ obj.get_salary }}</td>
+			  	</tr>
 			{% endfor %}
+			</table>
 		{% else %}
 			<p>Não existe nada no banco</p>
 		{% endif %}	
+		</center>
 	</body>
 </html>
