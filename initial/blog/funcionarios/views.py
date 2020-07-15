@@ -14,8 +14,21 @@ def home(req):
 	return render(req, "funcionarios/index.html", {"desc": desc})
 
 def lista(req):
-	dao = DaoFuncionario()
 	lista = dao.select_all()
 
 	#return HttpResponse("Lista de funcionarios")
-	return render(req, "funcionarios/lista.html", {"lista": lista})
+	return render(req, "funcionarios/lista.html", {"lista": lista, "funcionario": funcionario})
+
+def adicionar(req):
+	return render(req, "funcionarios/adicionar.html")
+
+@csrf_protect
+def send_funcionario(req):
+	if req.method == "POST":
+		funcionario.set_name(req.POST['name'])
+		funcionario.set_function(req.POST['function'])
+		funcionario.set_salary(float(req.POST['salary']))
+
+		dao.add(funcionario)
+		lista(req)
+	return HttpResponseRedirect("http://127.0.0.1:8000/funcionarios/lista/")
