@@ -31,4 +31,37 @@ def send_funcionario(req):
 
 		dao.add(funcionario)
 		lista(req)
-	return HttpResponseRedirect("http://127.0.0.1:8000/funcionarios/lista/")
+	return HttpResponseRedirect("/funcionarios/lista/")
+
+def deletar(req):
+	lista = dao.select_all()
+	return render(req, "funcionarios/deletar.html", {"lista": lista, "funcionario": funcionario})
+
+def delete(req):
+	if req.method == "GET":
+		dao.delete_by_id(req.GET['id'])
+	return HttpResponseRedirect("/funcionarios/deletar/")
+
+def editar(req):
+	lista = dao.select_all()
+	return render(req, "funcionarios/editar.html", {"lista": lista, "funcionario": funcionario})
+
+def edite(req):
+	if req.method == "GET":
+		lista = dao.select_id(req.GET["id"])
+		funcionario.set_name(lista[1])
+		funcionario.set_function(lista[2])
+		funcionario.set_salary(lista[3])
+
+		return render(req, "funcionarios/edite.html", {"funcionario":funcionario})
+	
+
+def edite_funcionario(req):
+	if req.method == "POST":
+		funcionario.set_id(req.POST['id'])
+		funcionario.set_name(req.POST['name'])
+		funcionario.set_function(req.POST['function'])
+		funcionario.set_salary(float(req.POST['salary']))
+
+		dao.update(funcionario, funcionario.get_id())
+	return HttpResponseRedirect("/funcionarios/lista/")

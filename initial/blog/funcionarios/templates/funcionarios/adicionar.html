@@ -7,7 +7,7 @@
 		
 		<center>
 			<h2>Adicionando um novo funcionário</h2>
-			<form method="POST" action="http://127.0.0.1:8000/funcionarios/enviar/">{% csrf_token %}
+			<form method="POST" action="../enviar/">{% csrf_token %}
 				<label for="name">Nome: </label><input type="text" name="name"><br><br>
 				<label for="function">Função: </label><input type="text" name="function"><br><br>
 				<label for="salary">Salário: </label><input type="text" name="salary"><br><br>
