@@ -48,7 +48,9 @@ def editar(req):
 
 def edite(req):
 	if req.method == "GET":
-		lista = dao.select_id(req.GET["id"])
+		_id = req.GET["id"];
+		lista = dao.select_id(_id)
+		funcionario.set_id(lista[0])
 		funcionario.set_name(lista[1])
 		funcionario.set_function(lista[2])
 		funcionario.set_salary(lista[3])
