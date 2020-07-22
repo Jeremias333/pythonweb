@@ -11,7 +11,9 @@ dao = DaoFuncionario()
 def home(req):
 	desc = "Aqui irá conseguir manipular os dados dos usuários da empresa chatos."
 	#return HttpResponse("Bem vindo a seção de funcionarios.")
-	return render(req, "funcionarios/index.html", {"desc": desc})
+	lista = dao.select_all()
+
+	return render(req, "funcionarios/index.html", {"desc": desc, "lista": lista, "funcionario": funcionario})
 
 def lista(req):
 	lista = dao.select_all()
