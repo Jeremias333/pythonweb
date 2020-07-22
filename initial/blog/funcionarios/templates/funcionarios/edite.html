@@ -7,7 +7,7 @@
 		<center>
 			<h2>Editando um funcionário</h2>
 			<form method="POST" action="../editando/">{% csrf_token %}
-				<input type="text" name="id" value="{{req.GET['id']}}"><!--Tentar pegar parametro-->
+				<label for="id">Id: </label><input type="text" name="id" value="{{funcionario.get_id}}" readonly="true"><!--Tentar pegar parametro--><br><br>
 				<label for="name">Nome: </label><input type="text" name="name" value="{{funcionario.get_name}}"><br><br>
 				<label for="function">Função: </label><input type="text" name="function" value="{{funcionario.get_function}}"><br><br>
 				<label for="salary">Salário: </label><input type="text" name="salary" value="{{funcionario.get_salary}}"><br><br>
