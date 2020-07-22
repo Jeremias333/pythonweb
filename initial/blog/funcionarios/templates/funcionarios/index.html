@@ -1,18 +1,56 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>EMPRESA CHARTOS</title>
-	</head>
-	<body>
-		<center>
-			<h1><nav>
-				<a href="./adicionar/">Adicionar Funcionário</a> |
-				<a href="./lista/">Lista de Funcionários</a> |
-				<a href="./deletar/">Deletar Funcionário</a> |
-				<a href="./editar">Editar Funcionário</a>
-			</nav></h1>
-			<h1>Bem vindo a área de administração dos funcionários</h1>
-			<p>{{desc}}</p>
-		</center>
-	</body>
-</html>
+{% extends './base.html' %}
+{% block content %}
+<center>
+	<style type="text/css">
+		a{
+			color:white;
+		}
+		/*table, th, td {
+		  border: 1px solid black;
+		  border-collapse: collapse;
+		}
+		table.center {
+		  margin-left: auto;
+		  margin-right: auto;
+		}
+		th, td {
+		  padding: 10px;
+		}
+		th{
+		  background-color: grey;
+		}*/
+	</style>
+	<h1 class="text-uppercase">Bem vindo a área de administração dos funcionários</h1>
+	<p style="font-size: 18px">{{desc}}</p>
+	<div class="badge badge-dark text-wrap" style="font-size: 24px;">
+		<a href="./adicionar/" class="text-decoration-none">Adicionar Funcionário</a> |
+		<!--<a href="./lista/" class="text-decoration-none">Lista de Funcionários</a> |-->
+		<a href="./deletar/" class="text-decoration-none">Deletar Funcionário</a> |
+		<a href="./editar" class="text-decoration-none">Editar Funcionário</a>
+	</div><br><br><br>
+	{% if lista %}
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+				    <th scope="col">ID</th>
+				    <th scope="col">Nome</th>
+				    <th scope="col">Função</th>
+				    <th scope="col">Salário</th>
+			  	</tr>
+		  	</thead>
+		{% for obj in lista %}
+			<tbody>
+				<tr>
+				    <td scope="row">{{ obj.get_id }}</td>
+				    <td>{{ obj.get_name }}</td>
+				    <td>{{ obj.get_function }}</td>
+				    <td>{{ obj.get_salary }}</td>
+			  	</tr>
+			</tbody>
+		{% endfor %}
+		</table>
+	{% else %}
+		<p>Não existe nada no banco</p>
+	{% endif %}
+</center>
+{% endblock %}
