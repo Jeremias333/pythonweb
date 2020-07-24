@@ -33,7 +33,7 @@ def send_funcionario(req):
 
 		dao.add(funcionario)
 		lista(req)
-	return HttpResponseRedirect("/funcionarios/lista/")
+	return HttpResponseRedirect("/funcionarios/")
 
 def deletar(req):
 	lista = dao.select_all()
