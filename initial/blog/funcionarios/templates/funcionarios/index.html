@@ -26,6 +26,7 @@
 				    <th scope="col">Nome</th>
 				    <th scope="col">Função</th>
 				    <th scope="col">Salário</th>
+				    <th><a href="./adicionar" class="btn btn-success btn-sm">Adicionar</a></th>
 			  	</tr>
 		  	</thead>
 		{% for obj in lista %}
@@ -34,7 +35,11 @@
 				    <td scope="row">{{ obj.get_id }}</td>
 				    <td><b>{{ obj.get_name }}</b></td>
 				    <td>{{ obj.get_function }}</td>
-				    <td>{{ obj.get_salary }}</td>
+				    <td><b>{{ obj.get_salary }} R$</b></td>
+				    <td>
+					    <a href="./edite/?id={{obj.get_id}}" class="btn btn-primary btn-lg">Editar</a>
+					    <a href="./delete/?id={{obj.get_id}}" class="btn btn-danger btn-lg">Excluir</a>
+					</td>
 			  	</tr>
 			</tbody>
 		{% endfor %}
