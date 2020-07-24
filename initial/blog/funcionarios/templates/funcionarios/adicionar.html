@@ -1,19 +1,32 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>EMPRESA CHARTOS</title>
-	</head>
-	<body>
-		
-		<center>
-			<h2>Adicionando um novo funcionário</h2>
-			<form method="POST" action="../enviar/">{% csrf_token %}
-				<label for="name">Nome: </label><input type="text" name="name"><br><br>
-				<label for="function">Função: </label><input type="text" name="function"><br><br>
-				<label for="salary">Salário: </label><input type="text" name="salary"><br><br>
-
-				<input type="submit" name="" value="Adicionar">
-			</form>
-		</center>
-	</body>
-</html>
+{% extends './base.html' %}
+{% block content %}
+<style type="text/css">
+	.container {
+		background: #DDD;
+	}
+</style>
+<center>
+	<br>
+	<h2>Adicionando um novo funcionário</h2>
+	<div class="container">
+		<br>
+		<form method="POST" action="../enviar/">{% csrf_token %}
+			<div class="form-row col-sm-6 col-form-label">
+				<label for="name">Nome</label>
+				<div class="col"><input type="text" name="name" class="form-control" placeholder="Júlia Eduarda" required="true"></div>
+			</div>
+			<div class="form-row col-sm-6">
+				<label for="function">Função</label>
+				<div class="col"><input type="text" name="function" class="form-control" placeholder="Desenvolvedor" required="true"></div>
+				<label for="salary">  Salário </label>
+				<div class="col"><input type="text" name="salary" class="form-control" placeholder="199.99" required="true"></div>
+			</div>
+			<br>
+			<div class="form-row col-sm-3">
+				<button class="col btn btn-dark" type="submit" name="">Adicionar</button>
+			</div>
+			<br>
+		</form>
+	</div>
+</center>
+{% endblock %}
