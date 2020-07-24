@@ -1,19 +1,34 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>EMPRESA CHARTOS</title>
-	</head>
-	<body>
-		<center>
-			<h2>Editando um funcionário</h2>
-			<form method="POST" action="../editando/">{% csrf_token %}
-				<label for="id">Id: </label><input type="text" name="id" value="{{funcionario.get_id}}" readonly="true"><!--Tentar pegar parametro--><br><br>
-				<label for="name">Nome: </label><input type="text" name="name" value="{{funcionario.get_name}}"><br><br>
-				<label for="function">Função: </label><input type="text" name="function" value="{{funcionario.get_function}}"><br><br>
-				<label for="salary">Salário: </label><input type="text" name="salary" value="{{funcionario.get_salary}}"><br><br>
-
-				<input type="submit" name="" value="Finalizar Edição">
-			</form>
-		</center>
-	</body>
-</html>
+{% extends './base.html' %}
+{% block content %}
+<style type="text/css">
+	.container {
+		background: #DDD;
+	}
+</style>
+<center>
+	<h2>Editando um funcionário</h2>
+	<br>
+	<div class="container">	
+		<form method="POST" action="../editando/">{% csrf_token %}
+			<div class="form-row col-sm-2 col-form-label">
+				<input type="text" name="id" hidden="true" value="{{funcionario.get_id}}"> 
+			</div>
+			<div class="form-row col-sm-6 col-form-label">
+				<label for="name">Nome</label>
+				<div class="col"><input type="text" name="name" class="form-control" placeholder="Júlia Eduarda" required="true" value="{{funcionario.get_name}}"></div>
+			</div>
+			<div class="form-row col-sm-6">
+				<label for="function">Função</label>
+				<div class="col"><input type="text" name="function" class="form-control" placeholder="Desenvolvedor" required="true" value="{{funcionario.get_function}}"></div>
+				<label for="salary">  Salário </label>
+				<div class="col"><input type="text" name="salary" class="form-control" placeholder="199.99" required="true"  value="{{funcionario.get_salary}}"></div>
+			</div>
+			<br>
+			<div class="form-row col-sm-3">
+				<button class="col btn btn-dark" type="submit" name="">Editar</button>
+			</div>
+			<br>
+		</form>
+	</div>
+</center>
+{% endblock %}
