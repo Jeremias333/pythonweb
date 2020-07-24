@@ -42,7 +42,7 @@ def deletar(req):
 def delete(req):
 	if req.method == "GET":
 		dao.delete_by_id(req.GET['id'])
-	return HttpResponseRedirect("/funcionarios/deletar/")
+	return HttpResponseRedirect("/funcionarios/")
 
 def editar(req):
 	lista = dao.select_all()
@@ -68,4 +68,4 @@ def edite_funcionario(req):
 		funcionario.set_salary(float(req.POST['salary']))
 
 		dao.update(funcionario, funcionario.get_id())
-	return HttpResponseRedirect("/funcionarios/lista/")
+	return HttpResponseRedirect("/funcionarios/")
