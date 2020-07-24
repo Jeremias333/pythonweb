@@ -15,7 +15,7 @@ class Funcionario:
         return self.function
 
     def get_salary(self):
-        return self.salary
+        return "{:.2f}".format(float(self.salary))
 
     def set_id(self, id:int):
         self.id = id
@@ -27,4 +27,4 @@ class Funcionario:
         self.function = function
 
     def set_salary(self, salary:float):
-        self.salary = salary
+        self.salary = "{:.2f}".format(float(salary))
