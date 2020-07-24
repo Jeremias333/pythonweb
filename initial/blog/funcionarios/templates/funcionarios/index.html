@@ -15,15 +15,12 @@
 	</style>
 	<h1 class="text-uppercase">Bem vindo a área de administração dos funcionários</h1>
 	<p style="font-size: 18px">{{desc}}</p>
-	<div class="badge badge-dark text-wrap" style="font-size: 24px;">
-		<a href="./adicionar/" class="text-decoration-none">Adicionar Funcionário</a> |
-		<!--<a href="./lista/" class="text-decoration-none">Lista de Funcionários</a> |-->
-		<a href="./deletar/" class="text-decoration-none">Deletar Funcionário</a> |
-		<a href="./editar" class="text-decoration-none">Editar Funcionário</a>
-	</div><br><br><br>
+	
+	<div class="container">
+	<!--Impressão da lista.-->
 	{% if lista %}
 		<table class="table">
-			<thead class="thead-dark">
+			<thead class="thead-dark text-center">
 				<tr>
 				    <th scope="col">ID</th>
 				    <th scope="col">Nome</th>
@@ -33,9 +30,9 @@
 		  	</thead>
 		{% for obj in lista %}
 			<tbody>
-				<tr>
+				<tr class="text-center">
 				    <td scope="row">{{ obj.get_id }}</td>
-				    <td>{{ obj.get_name }}</td>
+				    <td><b>{{ obj.get_name }}</b></td>
 				    <td>{{ obj.get_function }}</td>
 				    <td>{{ obj.get_salary }}</td>
 			  	</tr>
@@ -45,5 +42,6 @@
 	{% else %}
 		<p>Não existe nada no banco</p>
 	{% endif %}
+	</div>
 </center>
 {% endblock %}
